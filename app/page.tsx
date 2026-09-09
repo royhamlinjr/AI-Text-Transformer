@@ -78,6 +78,7 @@ export default function Home() {
               />
 
               {/* Tone dropdown */}
+              {mode === "rewrite" && (
               <div className="flex items-center gap-3">
                 <span className="text-sm text-zinc-300">Tone</span>
 
@@ -92,8 +93,10 @@ export default function Home() {
                   <option>Funny</option>
                 </select>
               </div>
+              )}
 
               {/* Target language */}
+              {mode === "translate" && (
               <div className="flex items-center gap-3">
                 <span className="text-sm text-zinc-300">Target</span>
 
@@ -106,6 +109,7 @@ export default function Home() {
                   <option>English</option>
                 </select>
               </div>
+              )}
 
               {/* Transform button */}
               <button className="w-full rounded-2xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300">
