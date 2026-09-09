@@ -33,6 +33,11 @@ export default function Home() {
     setText(sampleText);
   }
 
+  function ClearText() {
+    setText("");
+    setOutput("");
+  }
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
       <div className="mx-auto max-w-4xl px-4 py-10">
@@ -71,7 +76,9 @@ export default function Home() {
                 Load sample
               </button>
 
-              <button className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800">
+              <button 
+              onClick={ClearText}
+              className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800">
                 Clear
               </button>
             </div>
