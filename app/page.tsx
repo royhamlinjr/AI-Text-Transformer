@@ -1,4 +1,26 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+
+  const [mode , setMode] = useState("summarize");
+
+  const MODES = [
+    {
+      name: "summarize",
+      label: "Summarize",
+    },
+    {
+      name: "rewrite",
+      label: "Rewrite",
+    },
+    {
+      name: "translate",
+      label: "Translate",
+    },
+  ]
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
       <div className="mx-auto max-w-4xl px-4 py-10">
@@ -17,6 +39,19 @@ export default function Home() {
         <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
           {/* Mode buttons + actions */}
           <div className="flex flex-wrap items-center gap-2">
+
+            {
+              MODES.map((item) => (
+                <button 
+                  key={item.name}
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${mode === item.name ? "bg-zinc-100 text-zinc-900" : "bg-zinc-800 text-zinc-200 hover:bg-zinc-700"}`}
+                  onClick={() => setMode(item.name)}
+                >
+                  {item.label}
+                </button>
+              ))
+            }
+
             <button className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 transition">
               Summarize
             </button>
