@@ -77,6 +77,8 @@ export default function Home() {
               <label className="text-sm text-zinc-300">Input</label>
 
               <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 placeholder="Paste your text here…"
                 className="h-64 w-full resize-none rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-100 outline-none focus:border-zinc-500"
               />
