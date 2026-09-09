@@ -52,18 +52,6 @@ export default function Home() {
               ))
             }
 
-            <button className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 transition">
-              Summarize
-            </button>
-
-            <button className="rounded-full bg-zinc-800 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:bg-zinc-700">
-              Rewrite
-            </button>
-
-            <button className="rounded-full bg-zinc-800 px-4 py-2 text-sm font-medium text-zinc-200 transition hover:bg-zinc-700">
-              Translate
-            </button>
-
             <div className="ml-auto flex items-center gap-2">
               <button className="rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800">
                 Load sample
