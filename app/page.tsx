@@ -9,6 +9,10 @@ export default function Home() {
   const [tone, setTone] = useState("simple");
   const [target, setTarget] = useState("tamil");
 
+  const [text, setText] = useState("");
+  const [output, setOutput] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const MODES = [
     {
       name: "summarize",
