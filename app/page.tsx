@@ -6,6 +6,9 @@ export default function Home() {
 
   const [mode , setMode] = useState("summarize");
 
+  const [tone, setTone] = useState("simple");
+  const [target, setTarget] = useState("tamil");
+
   const MODES = [
     {
       name: "summarize",
