@@ -42,6 +42,26 @@ export default function Home() {
     if (!output) return;
     await navigator.clipboard.writeText(output);
   }
+  
+  async function transform() {
+    setLoading(true);
+    setOutput("");
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    if (mode === "summarize") {
+      setOutput("This is a summary of the input text.");
+    } else if (mode === "rewrite") {
+      setOutput(`This is a rewritten version of the input text in a ${tone} tone.`);
+    } else {
+      if (target === "tamil") {
+        setOutput("இந்த உள்ளீட்டு உரையின் தமிழாக்கம் இதோ.");
+      } else {
+        setOutput("This is the English translation of the input text.");
+      }
+    }
+    setLoading(false);
+  }
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
@@ -137,8 +157,10 @@ export default function Home() {
               )}
 
               {/* Transform button */}
-              <button className="w-full rounded-2xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300">
-                Transform
+              <button 
+                onClick={transform}
+                className="w-full rounded-2xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-emerald-300">
+                {loading ? "Transforming..." : "Transform"}
               </button>
             </div>
 
@@ -147,9 +169,11 @@ export default function Home() {
               <label className="text-sm text-zinc-300">Output</label>
 
               <div className="h-64 overflow-auto whitespace-pre-wrap rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 text-sm text-zinc-100">
-                <span className="text-zinc-500">
+                {output ? output : ( 
+                  <span className="text-zinc-500">
                   Your transformed text will appear here.
-                </span>
+                  </span>
+                 )}
               </div>
 
               <button 
