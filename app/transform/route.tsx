@@ -13,3 +13,31 @@ function buildInstructions(mode : string, tone : string, target : string) {
         return `${base} Translate the text to ${target.toLowerCase()}.Do change the proper nouns and names to the target language.`;
     }
 }
+
+export async function POST(req: Request) {
+
+    try {
+        const { input, mode, tone, target } = await req.json();
+
+        const cleanedInput = input ? input.trim() : "";
+
+        if (!cleanedInput) {
+            return new Response(JSON.stringify({ error: "Input text is required." }), { status: 400 });
+        } 
+
+        const ai = new GoogleGenAI({
+            apiKey: process.env.GEMINI_API_KEY,
+        });
+
+        const interaction = await ai.interactions.create({
+            model: "gemini-3.8-flash",
+            system_instruction: buildInstructions(mode, tone, target),
+            input: cleanedInput,
+        });
+
+        return Response.json({ output : interaction.output_text || ""});
+    } catch (error) {
+        console.error("Error in /transform route:", error);
+        return new Response(JSON.stringify({ error: "An error occurred while processing the request." }), { status: 500 });
+    }     
+}
