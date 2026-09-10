@@ -38,6 +38,11 @@ export default function Home() {
     setOutput("");
   }
 
+  async function onCopy() {
+    if (!output) return;
+    await navigator.clipboard.writeText(output);
+  }
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
       <div className="mx-auto max-w-4xl px-4 py-10">
@@ -147,7 +152,9 @@ export default function Home() {
                 </span>
               </div>
 
-              <button className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800">
+              <button 
+                onClick={onCopy}
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800">
                 Copy
               </button>
 
