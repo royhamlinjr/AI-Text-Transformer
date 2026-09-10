@@ -47,20 +47,27 @@ export default function Home() {
     setLoading(true);
     setOutput("");
 
-    await new Promise((r) => setTimeout(r, 1000));
+    try {
+      const response = await fetch("/api/transform", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mode,
+          tone : mode === "rewrite" ? tone : undefined,
+          target,
+          input: text,
+        }),
+      });
 
-    if (mode === "summarize") {
-      setOutput("This is a summary of the input text.");
-    } else if (mode === "rewrite") {
-      setOutput(`This is a rewritten version of the input text in a ${tone} tone.`);
-    } else {
-      if (target === "tamil") {
-        setOutput("இந்த உள்ளீட்டு உரையின் தமிழாக்கம் இதோ.");
-      } else {
-        setOutput("This is the English translation of the input text.");
-      }
+      const data = await response.json();
+      setOutput(data.output);
+    } catch (error) {
+      console.error("Error transforming text:", error);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
   return (
