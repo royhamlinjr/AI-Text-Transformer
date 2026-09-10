@@ -134,16 +134,16 @@ export default function Home() {
               <div className="flex items-center gap-3">
                 <span className="text-sm text-zinc-300">Tone</span>
 
-                <select 
-                  value={tone}
-                  onChange={(e) => setTone(e.target.value)}
-                  className="rounded-xl border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100"
-                >
-                  <option>Simple</option>
-                  <option>Professional</option>
-                  <option>Friendly</option>
-                  <option>Funny</option>
-                </select>
+                <select
+                    value={tone}
+                    onChange={(e) => setTone(e.target.value)}
+                    className="rounded-xl border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100"
+                  >
+                    <option value="simple">Simple</option>
+                    <option value="professional">Professional</option>
+                    <option value="friendly">Friendly</option>
+                    <option value="funny">Funny</option>
+                  </select>
               </div>
               )}
 
@@ -157,8 +157,8 @@ export default function Home() {
                   onChange={(e) => setTarget(e.target.value)}
                   className="rounded-xl border border-zinc-800 bg-zinc-950/60 px-3 py-2 text-sm text-zinc-100"
                 >
-                  <option>Tamil</option>
-                  <option>English</option>
+                  <option value="tamil">Tamil</option>
+                  <option value="english">English</option>
                 </select>
               </div>
               )}
